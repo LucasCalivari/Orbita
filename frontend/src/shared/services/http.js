@@ -1,4 +1,5 @@
-// Cliente HTTP único hacia la API. Todas las páginas usan este archivo.
+// Cliente HTTP único hacia la API. Las features lo usan desde su propio api.js;
+// las páginas nunca llaman a fetch directamente.
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
 
 async function solicitar(metodo, ruta, cuerpo) {
@@ -12,13 +13,13 @@ async function solicitar(metodo, ruta, cuerpo) {
   if (!respuesta.ok) {
     const error = new Error(datos.error || `Error ${respuesta.status}`);
     error.status = respuesta.status;
-    error.detalles = datos.detalles;
+    error.detalles = datos.detalles; // errores por campo que devuelve validar() del backend
     throw error;
   }
   return datos;
 }
 
-export const api = {
+export const http = {
   get: (ruta) => solicitar('GET', ruta),
   post: (ruta, cuerpo) => solicitar('POST', ruta, cuerpo),
   put: (ruta, cuerpo) => solicitar('PUT', ruta, cuerpo),

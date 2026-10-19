@@ -31,9 +31,10 @@ Orbita/
 │   └── tests/               tests con node:test (npm test -w backend)
 ├── frontend/
 │   └── src/
-│       ├── components/      componentes reutilizables (layout, UI)
-│       ├── pages/           una página por pantalla
-│       └── services/        cliente HTTP hacia la API
+│       ├── app/             App, providers y router (rutas protegidas por rol)
+│       ├── features/        una carpeta por funcionalidad (auth, catalogo, carrito…)
+│       ├── shared/          layout, componentes comunes y cliente HTTP
+│       └── styles/          tokens de diseño (Figma) y estilos globales
 └── docker-compose.yml       PostgreSQL local
 ```
 

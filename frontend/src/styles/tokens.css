@@ -1,0 +1,45 @@
+/*
+ * Tokens de diseño tomados de los mockups de Figma (archivo "Wireframe-Taller").
+ * El archivo no tiene variables definidas: los colores se midieron sobre las pantallas,
+ * así que pueden tener una diferencia mínima con los valores originales.
+ * Si el diseño cambia, se actualiza solo este archivo.
+ */
+:root {
+  /* Fondos */
+  --color-fondo: #08080f;
+  --color-superficie: #12121f;        /* sidebar de filtros, navbar */
+  --color-superficie-2: #1a1a2e;      /* tarjetas de contenido */
+  --color-tarjeta-producto: #383847;
+  --color-input: #1e1e30;
+  --color-borde: #2a2a40;
+
+  /* Texto */
+  --color-texto: #f2f2f7;
+  --color-texto-secundario: #95959f;
+
+  /* Marca */
+  --color-cian: #00c8ff;              /* botón "+ Carrito", acentos */
+  --color-violeta: #7c4dff;
+  --color-magenta: #e040fb;           /* badge "¡Últimas unidades!" */
+  --degrade-marca: linear-gradient(135deg, #17b1ff 0%, #7753ff 100%);
+
+  /* Tipografía */
+  --fuente-base: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --texto-xs: 0.75rem;
+  --texto-sm: 0.875rem;
+  --texto-base: 1rem;
+  --texto-lg: 1.25rem;
+  --texto-xl: 1.75rem;
+
+  /* Espaciado y forma */
+  --espacio-1: 4px;
+  --espacio-2: 8px;
+  --espacio-3: 12px;
+  --espacio-4: 16px;
+  --espacio-6: 24px;
+  --espacio-8: 32px;
+  --radio-sm: 6px;
+  --radio: 12px;
+  --radio-pill: 999px;
+  --ancho-maximo: 1280px;
+}

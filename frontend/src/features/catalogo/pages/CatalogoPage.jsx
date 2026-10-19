@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { api } from '../services/api.js';
+import { http } from '../../../shared/services/http.js';
 
-// Pantalla de inicio. El catálogo real se implementa en CU-03.
-export default function Catalogo() {
+// Pantalla de inicio. El catálogo real (búsqueda, filtros, alertas de stock) es CU-03.
+export default function CatalogoPage() {
   const [estadoApi, setEstadoApi] = useState('verificando…');
 
   useEffect(() => {
-    api.get('/health')
+    http.get('/health')
       .then((r) => setEstadoApi(`${r.estado} · base de datos ${r.baseDeDatos}`))
       .catch(() => setEstadoApi('sin conexión con la API'));
   }, []);
