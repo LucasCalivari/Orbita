@@ -14,17 +14,21 @@ Arquitectura desacoplada (frontend y backend separados), según el Entregable N�
 | Lógica de negocio | Node.js + Express (API REST) | `backend/` |
 | Persistencia | PostgreSQL | `backend/src/db/` |
 
-El backend sigue capas `routes → controllers → services → repositories` para desacoplar la lógica de negocio del modelo físico de la base (RNF-09).
+El backend se organiza en módulos por dominio; dentro de cada uno, capas `routes → controller → service → repository` para desacoplar la lógica de negocio del modelo físico de la base (RNF-09).
 
 ```
 Orbita/
 ├── backend/
-│   └── src/
-│       ├── config/          variables de entorno
-│       ├── db/              pool de conexión, migraciones SQL y seeds
-│       ├── middlewares/     manejo de errores, autenticación, roles
-│       ├── modules/         un módulo por dominio (auth, usuarios, productos…)
-│       └── routes/          registro de rutas de la API
+│   ├── src/
+│   │   ├── config/          variables de entorno
+│   │   ├── db/              pool de conexión, migraciones SQL y seeds
+│   │   ├── modules/         un módulo por dominio (auth, productos, carrito…)
+│   │   │   └── <modulo>/    routes · controller · service · repository · schemas
+│   │   ├── shared/          middlewares, errores y utilidades comunes
+│   │   ├── routes.js        junta las rutas de todos los módulos
+│   │   ├── app.js           arma Express
+│   │   └── server.js        levanta el puerto
+│   └── tests/               tests con node:test (npm test -w backend)
 ├── frontend/
 │   └── src/
 │       ├── components/      componentes reutilizables (layout, UI)

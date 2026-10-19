@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { query } from '../db/pool.js';
+import { query } from '../../db/pool.js';
 
 export const saludRouter = Router();
 
