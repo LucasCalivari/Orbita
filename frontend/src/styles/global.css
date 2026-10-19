@@ -1,0 +1,69 @@
+/* Estilos base. Todos los valores salen de tokens.css. La fuente Inter se carga en index.html. */
+
+:root {
+  font-family: var(--fuente-base);
+  color: var(--color-texto);
+  background: var(--color-fondo);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: var(--color-cian); }
+h1 { font-size: var(--texto-xl); margin: 0 0 var(--espacio-3); }
+
+.layout { min-height: 100vh; display: flex; flex-direction: column; }
+.contenido {
+  flex: 1; width: 100%; max-width: var(--ancho-maximo);
+  margin: 0 auto; padding: var(--espacio-6) var(--espacio-4);
+}
+
+/* Navbar */
+.navbar {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--espacio-4);
+  padding: var(--espacio-3) var(--espacio-4);
+  background: var(--color-superficie);
+  border-bottom: 2px solid transparent;
+  border-image: var(--degrade-marca) 1;
+}
+.navbar__marca {
+  font-weight: 800; letter-spacing: 0.15em; text-decoration: none;
+  background: var(--degrade-marca); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.navbar__links { display: flex; flex-wrap: wrap; gap: var(--espacio-4); align-items: center; }
+.navbar__links a:not(.boton) { color: var(--color-texto-secundario); text-decoration: none; }
+.navbar__links a.active:not(.boton) { color: var(--color-texto); }
+.navbar__usuario { color: var(--color-texto-secundario); font-size: var(--texto-sm); }
+
+/* Botones */
+.boton, button {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--color-cian); color: var(--color-fondo); border: 0;
+  border-radius: var(--radio-pill); padding: var(--espacio-2) var(--espacio-4);
+  font: inherit; font-weight: 600; font-size: var(--texto-sm); text-decoration: none; cursor: pointer;
+}
+.boton--secundario {
+  background: var(--color-input); color: var(--color-texto); border: 1px solid var(--color-borde);
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Tarjetas */
+.tarjeta {
+  padding: var(--espacio-6); background: var(--color-superficie-2);
+  border: 1px solid var(--color-borde); border-radius: var(--radio);
+}
+.tarjeta--centrada { max-width: 420px; margin: var(--espacio-8) auto; }
+.botones-sociales { display: flex; flex-direction: column; gap: var(--espacio-3); margin-top: var(--espacio-4); }
+
+/* Utilidades */
+.nota { color: var(--color-texto-secundario); font-size: var(--texto-sm); }
+.texto-degrade {
+  background: var(--degrade-marca); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* Footer */
+.footer {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--espacio-2);
+  padding: var(--espacio-4); background: var(--color-superficie);
+  color: var(--color-texto-secundario); font-size: var(--texto-sm);
+}
+.footer p { margin: 0; }

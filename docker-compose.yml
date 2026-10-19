@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: orbita-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: orbita
+      POSTGRES_PASSWORD: orbita
+      POSTGRES_DB: orbita
+    ports:
+      - "5432:5432"
+    volumes:
+      - orbita-pgdata:/var/lib/postgresql/data
+
+volumes:
+  orbita-pgdata:
