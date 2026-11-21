@@ -21,6 +21,7 @@
   --color-cian: #00c8ff;              /* botón "+ Carrito", acentos */
   --color-violeta: #7c4dff;
   --color-magenta: #e040fb;           /* badge "¡Últimas unidades!" */
+  --color-error: #ff5252;             /* campos inválidos (CU-01): no está en Figma */
   --degrade-marca: linear-gradient(135deg, #17b1ff 0%, #7753ff 100%);
 
   /* Tipografía */

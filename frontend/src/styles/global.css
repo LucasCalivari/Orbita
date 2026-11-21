@@ -52,7 +52,31 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   border: 1px solid var(--color-borde); border-radius: var(--radio);
 }
 .tarjeta--centrada { max-width: 420px; margin: var(--espacio-8) auto; }
-.botones-sociales { display: flex; flex-direction: column; gap: var(--espacio-3); margin-top: var(--espacio-4); }
+.botones-sociales { display: flex; flex-direction: column; gap: var(--espacio-3); margin: var(--espacio-4) 0; }
+.tarjeta--formulario { max-width: 640px; margin: var(--espacio-6) auto; }
+
+/* Formularios (CU-01) */
+.formulario { display: flex; flex-direction: column; gap: var(--espacio-4); }
+.formulario fieldset {
+  border: 1px solid var(--color-borde); border-radius: var(--radio-sm);
+  padding: var(--espacio-4); margin: 0; display: flex; flex-direction: column; gap: var(--espacio-3);
+}
+.formulario legend { padding: 0 var(--espacio-2); color: var(--color-texto-secundario); font-size: var(--texto-sm); }
+.formulario__fila { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--espacio-3); }
+.campo { display: flex; flex-direction: column; gap: var(--espacio-1); }
+.campo label { font-size: var(--texto-sm); }
+.campo input, .campo select {
+  font: inherit; color: var(--color-texto); background: var(--color-input);
+  border: 1px solid var(--color-borde); border-radius: var(--radio-sm); padding: var(--espacio-2) var(--espacio-3);
+}
+.campo input:focus, .campo select:focus { outline: 2px solid var(--color-cian); outline-offset: 1px; }
+.campo--error input, .campo--error select { border-color: var(--color-error); }
+.campo__error { color: var(--color-error); font-size: var(--texto-xs); }
+
+/* Avisos */
+.aviso { padding: var(--espacio-3); border-radius: var(--radio-sm); font-size: var(--texto-sm); border: 1px solid; }
+.aviso--info { border-color: var(--color-cian); background: rgba(0, 200, 255, 0.08); }
+.aviso--error { border-color: var(--color-error); background: rgba(255, 82, 82, 0.1); color: var(--color-error); }
 
 /* Utilidades */
 .nota { color: var(--color-texto-secundario); font-size: var(--texto-sm); }
