@@ -10,7 +10,7 @@ Arquitectura desacoplada (frontend y backend separados), según el Entregable N�
 
 | Capa | Tecnología | Carpeta |
 |------|-----------|---------|
-| Presentación | React + Vite | `frontend/` |
+| Presentación | React 18 + Vite 7 + React Router 7 | `frontend/` |
 | Lógica de negocio | Node.js + Express (API REST) | `backend/` |
 | Persistencia | PostgreSQL | `backend/src/db/` |
 
@@ -40,7 +40,7 @@ Orbita/
 
 ## Requisitos
 
-- Node.js 20 o superior
+- Node.js 20.19 o superior (o 22.12+), requerido por Vite 7
 - PostgreSQL 16 (instalado localmente o con Docker)
 
 ## Puesta en marcha
@@ -65,6 +65,11 @@ npm run dev
 ```
 
 Verificar la API: http://localhost:4000/api/health
+
+```bash
+# Correr los tests del backend
+npm test -w backend
+```
 
 ## Forma de trabajo
 
