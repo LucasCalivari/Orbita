@@ -40,7 +40,7 @@ export async function crearUsuarioConDireccion({ proveedor, socialId, nombre, ap
     await cliente.query(
       `INSERT INTO direccion (id_usuario, calle, numero, localidad, provincia, cod_postal, referencia, es_principal)
        VALUES ($1, $2, $3, $4, $5, $6, $7, TRUE)`,
-      [id, direccion.calle, direccion.numero, direccion.localidad, direccion.provincia, direccion.codPostal, direccion.referencia],
+      [id, direccion.calle, direccion.numero, direccion.localidad, direccion.provincia, direccion.codPostal, direccion.referencia ?? null],
     );
 
     return { id, nombre, apellido, email, rol: 'usuario' };

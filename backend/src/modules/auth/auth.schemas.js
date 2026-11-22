@@ -40,7 +40,13 @@ export const registroSchema = z.object({
         errorMap: () => ({ message: 'Elegí una provincia de la lista' }),
       }),
       codPostal: enteroPositivo('El código postal', { min: 1000, max: 9999 }),
-      referencia: textoObligatorio('La referencia del domicilio', 255),
+      // Opcional (decisión del equipo 21/11/2026): vacía o ausente se guarda como null.
+      referencia: z
+        .string({ invalid_type_error: 'La referencia debe ser texto' })
+        .trim()
+        .max(255, 'La referencia admite hasta 255 caracteres')
+        .nullish()
+        .transform((valor) => valor || null),
     },
     { required_error: 'La dirección es obligatoria' },
   ),

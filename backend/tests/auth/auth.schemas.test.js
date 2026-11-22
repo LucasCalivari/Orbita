@@ -31,9 +31,9 @@ test('campos complementarios vacíos se informan uno por uno', () => {
   const errores = camposConError({
     ...valido,
     dni: '',
-    direccion: { ...valido.direccion, calle: '  ', referencia: '' },
+    direccion: { ...valido.direccion, calle: '  ', localidad: '' },
   });
-  assert.deepEqual(errores.sort(), ['direccion.calle', 'direccion.referencia', 'dni']);
+  assert.deepEqual(errores.sort(), ['direccion.calle', 'direccion.localidad', 'dni']);
 });
 
 test('provincia fuera de la lista y código postal inválido son rechazados', () => {
@@ -42,6 +42,17 @@ test('provincia fuera de la lista y código postal inválido son rechazados', ()
     direccion: { ...valido.direccion, provincia: 'Montevideo', codPostal: '12' },
   });
   assert.deepEqual(errores.sort(), ['direccion.codPostal', 'direccion.provincia']);
+});
+
+test('la referencia del domicilio es opcional: vacía o ausente queda en null', () => {
+  const { referencia, ...sinReferencia } = valido.direccion;
+  assert.equal(registroSchema.parse({ ...valido, direccion: sinReferencia }).direccion.referencia, null);
+  assert.equal(registroSchema.parse({ ...valido, direccion: { ...valido.direccion, referencia: '   ' } }).direccion.referencia, null);
+  assert.equal(registroSchema.parse(valido).direccion.referencia, 'Portón negro');
+});
+
+test('referencia de más de 255 caracteres es inválida', () => {
+  assert.deepEqual(camposConError({ ...valido, direccion: { ...valido.direccion, referencia: 'x'.repeat(256) } }), ['direccion.referencia']);
 });
 
 test('apellido vacío es inválido (Google a veces no lo envía)', () => {

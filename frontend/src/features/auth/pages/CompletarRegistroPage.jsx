@@ -14,10 +14,15 @@ const VACIO = {
 // El backend devuelve los errores con la ruta del campo (ej. "direccion.calle").
 const nombreCampo = (ruta) => ruta.replace(/^direccion\./, '');
 
-function Campo({ id, etiqueta, error, children }) {
+// Los campos son obligatorios salvo que se indique obligatorio={false}; se marcan con *.
+// El asterisco es visual (aria-hidden): los lectores de pantalla ya anuncian el atributo required.
+function Campo({ id, etiqueta, error, obligatorio = true, children }) {
   return (
     <div className={`campo${error ? ' campo--error' : ''}`}>
-      <label htmlFor={id}>{etiqueta}</label>
+      <label htmlFor={id}>
+        {etiqueta}
+        {obligatorio && <span className="marca-obligatorio" aria-hidden="true"> *</span>}
+      </label>
       {children}
       {error && <span className="campo__error" id={`${id}-error`}>{error}</span>}
     </div>
@@ -99,6 +104,10 @@ export default function CompletarRegistroPage() {
         Los necesitamos para emitir tus comprobantes y hacerte llegar los pedidos. Cuenta de Google: <strong>{email}</strong>
       </p>
 
+      <p className="nota leyenda-obligatorios">
+        Los campos marcados con <span className="marca-obligatorio" aria-hidden="true">*</span> son obligatorios.
+      </p>
+
       {errorGeneral && <p className="aviso aviso--error" role="alert">{errorGeneral}</p>}
 
       <form className="formulario" onSubmit={enviar} noValidate>
@@ -126,12 +135,12 @@ export default function CompletarRegistroPage() {
             </Campo>
           </div>
           <Campo id="provincia" etiqueta="Provincia" error={errores.provincia}>
-            <select id="provincia" name="provincia" value={valores.provincia} onChange={cambiar} aria-invalid={Boolean(errores.provincia)}>
+            <select id="provincia" name="provincia" value={valores.provincia} onChange={cambiar} aria-invalid={Boolean(errores.provincia)} required>
               {PROVINCIAS.map((p) => <option key={p} value={p}>{p}</option>)}
             </select>
           </Campo>
-          <Campo id="referencia" etiqueta="Referencia del domicilio" error={errores.referencia}>
-            {entrada('referencia', { placeholder: 'Ej.: casa con portón negro, timbre 2' })}
+          <Campo id="referencia" etiqueta="Referencia del domicilio (opcional)" error={errores.referencia} obligatorio={false}>
+            {entrada('referencia', { required: false, maxLength: 255, placeholder: 'Ej.: casa con portón negro, timbre 2' })}
           </Campo>
         </fieldset>
 
