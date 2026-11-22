@@ -15,4 +15,10 @@ export const env = {
   databaseUrl: requerida('DATABASE_URL'),
   jwtSecret: process.env.JWT_SECRET,
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '8h',
+  // RF-01: acceso solo con cuenta de Google (CU-01 / CU-02)
+  google: {
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    redirectUri: process.env.GOOGLE_REDIRECT_URI || 'http://localhost:4000/api/auth/google/callback',
+  },
 };

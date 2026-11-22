@@ -20,7 +20,10 @@ export default function Navbar() {
             </button>
           </>
         ) : (
-          <NavLink to="/ingresar" className="boton">Ingresar</NavLink>
+          <>
+            <NavLink to="/ingresar">Ingresar</NavLink>
+            <NavLink to="/registro" className="boton">Registrarse</NavLink>
+          </>
         )}
       </nav>
     </header>

@@ -1,6 +1,6 @@
 // Cliente HTTP único hacia la API. Las features lo usan desde su propio api.js;
 // las páginas nunca llaman a fetch directamente.
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+export const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
 
 async function solicitar(metodo, ruta, cuerpo) {
   const respuesta = await fetch(`${BASE_URL}${ruta}`, {
